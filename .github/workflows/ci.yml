@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set variables
         id: vars
+        working-directory: ${{ matrix.major }}/${{ matrix.os }}
         run: |
           echo ::set-output name=repository::${GITHUB_ACTOR}/$(basename ${GITHUB_REPOSITORY})
           echo ::set-output name=version::$(grep 'HFISH_VERSION ' Dockerfile | awk '{print $3}')
