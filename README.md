@@ -12,7 +12,8 @@
 You can use the image directly, e.g.
 
 ```
-docker run --rm -it chinayin/hfish:0.6
+docker run --rm -it chinayin/hfish:2.4
+docker run --rm -it chinayin/hfish:2.4-client
 ```
 
 The images are built daily and have the security release enabled, so will contain any security updates released more
@@ -21,5 +22,6 @@ than 24 hours ago.
 You can also use the images as a base for your own Dockerfile:
 
 ```
-FROM chinayin/hfish:0.6
+FROM chinayin/hfish:2.4
+FROM chinayin/hfish:2.4-client
 ```
