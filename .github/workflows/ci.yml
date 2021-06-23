@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        major: [ "0.6" ]
-        os: [ alpine ]
+        major: [ 2.4 ]
+        os: [ server,client ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -33,12 +33,23 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v2
+        if: ${{ matrix.os == 'server' }}
         with:
           context: ${{ steps.vars.outputs.workdir }}
           pull: true
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: |
             ${{ steps.vars.outputs.repository }}:${{ matrix.major }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.version }}
+      - name: Build and push Client
+        uses: docker/build-push-action@v2
+        if: ${{ matrix.os == 'client' }}
+        with:
+          context: ${{ steps.vars.outputs.workdir }}
+          pull: true
+          push: true
+          platforms: linux/amd64
+          tags: |
+            ${{ steps.vars.outputs.repository }}:${{ matrix.major }}-${{ matrix.os }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.version }}-${{ matrix.os }}
