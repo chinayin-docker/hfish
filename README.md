@@ -1,6 +1,6 @@
 # HFish Image
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/chinayin-docker/hfish/Docker%20Image%20CI)
+[![Docker Image CI](https://github.com/chinayin-docker/hfish/actions/workflows/ci.yml/badge.svg?event=schedule)](https://github.com/chinayin-docker/hfish/actions/workflows/ci.yml)
 ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/chinayin/hfish?sort=semver)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chinayin/hfish?sort=semver)
 ![Docker Pulls](https://img.shields.io/docker/pulls/chinayin/hfish)
