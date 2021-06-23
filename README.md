@@ -5,7 +5,7 @@
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chinayin/hfish?sort=semver)
 ![Docker Pulls](https://img.shields.io/docker/pulls/chinayin/hfish)
 
-安全、可靠、简单、免费的企业级蜜罐
+安全、可靠、简单、免费的企业级蜜罐。
 
 # Use hfish
 
