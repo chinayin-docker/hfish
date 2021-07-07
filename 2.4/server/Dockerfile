@@ -6,7 +6,7 @@
 
 FROM chinayin/debian:buster-slim
 
-ENV HFISH_VERSION 2.4.1
+ENV HFISH_VERSION 2.4.2
 
 RUN set -eux; \
   install_packages curl net-tools wget telnet iputils-ping vim; \
