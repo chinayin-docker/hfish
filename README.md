@@ -12,8 +12,8 @@
 You can use the image directly, e.g.
 
 ```
-docker run --rm -it chinayin/hfish:2.4
-docker run --rm -it chinayin/hfish:2.4-client
+docker run --rm -it chinayin/hfish:2.5
+docker run --rm -it chinayin/hfish:2.5-client
 ```
 
 The images are built daily and have the security release enabled, so will contain any security updates released more
