@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        major: [ 2.6 ]
+        major: [ 2 ]
         os: [ server,client ]
     steps:
       - name: Checkout code
@@ -20,7 +20,9 @@ jobs:
         working-directory: ${{ matrix.major }}/${{ matrix.os }}
         run: |
           echo ::set-output name=repository::${GITHUB_ACTOR}/$(basename ${GITHUB_REPOSITORY})
-          echo ::set-output name=version::$(grep 'HFISH_VERSION ' Dockerfile | awk '{print $3}')
+          echo ::set-output name=version::$(grep ' HFISH_VERSION ' Dockerfile | awk -F '[. ]' '{print $3"."$4"."$5}')
+          echo ::set-output name=minor_version::$(grep ' HFISH_VERSION ' Dockerfile | awk -F '[. ]' '{print $3"."$4}')
+          echo ::set-output name=major_version::$(grep ' HFISH_VERSION ' Dockerfile | awk -F '[. ]' '{print $3}')
           echo ::set-output name=workdir::${{ matrix.major }}/${{ matrix.os }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -40,7 +42,8 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ steps.vars.outputs.repository }}:${{ matrix.major }}
+            ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.major_version }}
+            ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.minor_version }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.version }}
       - name: Build and push Client
         uses: docker/build-push-action@v2
@@ -51,5 +54,6 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ steps.vars.outputs.repository }}:${{ matrix.major }}-${{ matrix.os }}
+            ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.major_version }}-${{ matrix.os }}
+            ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.minor_version }}-${{ matrix.os }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.version }}-${{ matrix.os }}
