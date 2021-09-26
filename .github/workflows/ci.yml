@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        major: [ 2.5 ]
+        major: [ 2.6 ]
         os: [ server,client ]
     steps:
       - name: Checkout code
