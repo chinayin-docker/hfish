@@ -1,12 +1,12 @@
 #
 #--------------------------------------------------------------------------
-# hfish 2.5-client
+# hfish 2.6.1-client
 #--------------------------------------------------------------------------
 #
 
-FROM chinayin/debian:buster-slim
+FROM chinayin/debian:bullseye-slim
 
-ENV HFISH_VERSION 2.5
+ENV HFISH_VERSION 2.6.1
 
 RUN set -eux; \
   install_packages curl net-tools wget telnet iputils-ping vim; \

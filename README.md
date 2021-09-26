@@ -7,13 +7,13 @@
 
 安全、可靠、简单、免费的企业级蜜罐。
 
-# Use hfish
+# Usage
 
 You can use the image directly, e.g.
 
 ```
-docker run --rm -it chinayin/hfish:2.5
-docker run --rm -it chinayin/hfish:2.5-client
+docker run --rm -it chinayin/hfish:2.6
+docker run --rm -it chinayin/hfish:2.6-client
 ```
 
 The images are built daily and have the security release enabled, so will contain any security updates released more
@@ -22,6 +22,6 @@ than 24 hours ago.
 You can also use the images as a base for your own Dockerfile:
 
 ```
-FROM chinayin/hfish:2.4
-FROM chinayin/hfish:2.4-client
+FROM chinayin/hfish:2.6
+FROM chinayin/hfish:2.6-client
 ```
