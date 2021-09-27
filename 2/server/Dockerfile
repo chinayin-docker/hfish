@@ -1,6 +1,6 @@
 #
 #--------------------------------------------------------------------------
-# hfish 2.6.1-server
+# hfish 2.6-server
 #--------------------------------------------------------------------------
 #
 
@@ -12,7 +12,7 @@ RUN set -eux; \
   install_packages curl net-tools wget telnet iputils-ping vim; \
   #
   curl -fskSL -o hfish.tgz "https://hfish.cn-bj.ufileos.com/hfish-${HFISH_VERSION}-linux-amd64.tar.gz"; \
-  mkdir -p /opt/hfish; \
+  mkdir -p /opt/hfish /opt/hfish/tmp; \
   tar -zxvf hfish.tgz -C /opt/hfish; \
   rm -f hfish.tgz; \
   cat /opt/hfish/version;
