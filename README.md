@@ -25,3 +25,9 @@ You can also use the images as a base for your own Dockerfile:
 FROM chinayin/hfish:2.6
 FROM chinayin/hfish:2.6-client
 ```
+
+Launch the containers using `Docker Compose`:
+
+```
+docker-compose up -d
+```

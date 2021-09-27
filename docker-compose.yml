@@ -1,0 +1,29 @@
+version: '3'
+networks:
+  hfish:
+
+services:
+  server:
+    image: chinayin/hfish:${HFISH_VERSION}
+    hostname: hfish-server
+    volumes:
+      - ${SQLITE_DB_PATH}/hfish.db:/opt/hfish/db/hfish.db
+    ports:
+      - "4433:4433"
+      - "4434:4434"
+    networks:
+      - hfish
+
+  client:
+    image: chinayin/hfish:${HFISH_VERSION}-client
+    hostname: hfish-client
+    environment:
+      - CLIENT_URL=${CLIENT_URL}
+    ports:
+      - "21:21"
+      - "22:22"
+      - "23:23"
+      - "69:69"
+      - "5900:5900"
+    networks:
+      - hfish
