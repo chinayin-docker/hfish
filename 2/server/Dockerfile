@@ -13,10 +13,10 @@ RUN set -eux; \
   arch="$(dpkg --print-architecture)"; \
 	case "$arch" in \
 		'amd64') \
-			downloadUrl='https://hfish.cn-bj.ufileos.com/hfish-${HFISH_VERSION}-linux-amd64.tar.gz'; \
+			downloadUrl="https://hfish.cn-bj.ufileos.com/hfish-$HFISH_VERSION-linux-amd64.tar.gz"; \
 			;; \
 		'arm64') \
-			downloadUrl='https://hfish.cn-bj.ufileos.com/hfish-${HFISH_VERSION}-linux-arm64.tar.gz'; \
+			downloadUrl="https://hfish.cn-bj.ufileos.com/hfish-$HFISH_VERSION-linux-arm64.tar.gz"; \
 			;; \
 		*) echo >&2 "error: unsupported architecture: '$arch'"; exit 1 ;; \
 	esac; \
