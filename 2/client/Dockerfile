@@ -6,7 +6,7 @@
 
 FROM chinayin/debian:bullseye-slim
 
-ENV HFISH_VERSION 2.6.1
+ENV HFISH_VERSION 2.6.2
 
 RUN set -eux; \
   install_packages curl net-tools wget telnet iputils-ping vim; \
