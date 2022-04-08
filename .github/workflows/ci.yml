@@ -14,7 +14,7 @@ jobs:
         os: [ server,client ]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set variables
         id: vars
         working-directory: ${{ matrix.major }}/${{ matrix.os }}
@@ -40,7 +40,7 @@ jobs:
           context: ${{ steps.vars.outputs.workdir }}
           pull: true
           push: true
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.major_version }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.minor_version }}
@@ -52,7 +52,7 @@ jobs:
           context: ${{ steps.vars.outputs.workdir }}
           pull: true
           push: true
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.major_version }}-${{ matrix.os }}
             ${{ steps.vars.outputs.repository }}:${{ steps.vars.outputs.minor_version }}-${{ matrix.os }}
